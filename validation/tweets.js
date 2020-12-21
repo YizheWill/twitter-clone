@@ -16,6 +16,6 @@ module.exports = function ValidateTweetInput(data) {
 
   return {
     errors,
-    isValid: !!Object.keys(errors).length,
+    isValid: !Object.keys(errors).length,
   };
 };
