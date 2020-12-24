@@ -5,3 +5,6 @@ if you are confused about how passport works, read this two articles and you wil
 
 Always remember: passport.authenticate(<strategy>, <option hash>) is a middleware and can change you req body.
 
+don't forget to return res.send({msg: 'whatever'}) if we forget the 'return' there could be wired bugs.
+https://stackoverflow.com/questions/52122272/err-http-headers-sent-cannot-set-headers-after-they-are-sent-to-the-client
+
