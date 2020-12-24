@@ -1,13 +1,13 @@
-const passport = require('passport');
-const express = require('express');
+import passport from 'passport';
+import express from 'express';
 const app = express();
-const db = require('./config/keys').mongoURI;
+import db from './config/keys';
 const PORT = process.env.PORT || 5000;
-const mongoose = require('mongoose');
-const users = require('./routes/api/user');
-const tweets = require('./routes/api/tweets');
-const bodyParser = require('body-parser');
-const User = require('./models/User');
+import mongoose from 'mongoose';
+import users from './routes/api/user';
+import tweets from './routes/api/tweets';
+import bodyParser from 'body-parser';
+import User from './models/User';
 // connect to the mongo Atlas database we created.
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
