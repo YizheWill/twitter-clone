@@ -1,0 +1,39 @@
+{
+  "name": "twitter-clone",
+  "version": "1.0.0",
+  "description": "twitter mern clone",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yizhewill/twitter-clone.git"
+  },
+  "keywords": [
+    "twitter",
+    "clone"
+  ],
+  "author": "will wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yizhewill/twitter-clone/issues"
+  },
+  "homepage": "https://github.com/yizhewill/twitter-clone#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.8",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
