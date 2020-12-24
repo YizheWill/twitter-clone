@@ -1,9 +1,19 @@
+import passport from 'passport';
 import { Router } from 'express';
 import User from '../../models/User.js';
 import { secretOrKey } from '../../config/keys.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 const router = Router();
+
+// test get current user
+
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+  console.log('req', req);
+  // the req.user is set by the passport, if authenticate passes, passport will immediately set the req.user to be
+  // the return value of the passport.use(new JwtStrategy(...)) in the config/passport.js file
+  res.json({ id: req.user.id, handle: req.user.handle, email: req.user.email });
+});
 
 // register new user
 

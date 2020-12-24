@@ -1,9 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import passport from 'passport';
+import pspt from './config/passport.js';
+
 import { mongoURI } from './config/keys.js';
+
 import users from './routes/api/users.js';
 import tweets from './routes/api/tweets.js';
-import bodyParser from 'body-parser';
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true })
@@ -11,7 +15,8 @@ mongoose
   .catch((err) => console.log('err', err));
 
 const app = express();
-
+app.use(passport.initialize());
+pspt(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
