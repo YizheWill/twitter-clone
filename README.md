@@ -8,3 +8,6 @@ Always remember: passport.authenticate(<strategy>, <option hash>) is a middlewar
 don't forget to return res.send({msg: 'whatever'}) if we forget the 'return' there could be wired bugs.
 https://stackoverflow.com/questions/52122272/err-http-headers-sent-cannot-set-headers-after-they-are-sent-to-the-client
 
+
+started session errors on https://open.appacademy.io/learn/full-stack-online/mern-stack-curriculum/frontend-auth
+
