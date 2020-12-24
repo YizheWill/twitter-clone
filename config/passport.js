@@ -12,7 +12,6 @@ export default (passport) => {
     new JwtStrategy(options, (jwt_payload, done) => {
       User.findById(jwt_payload.id)
         .then((data) => {
-          console.log('data', data);
           return done(null, data || false);
         })
         .catch((err) => console.log('err', err));
