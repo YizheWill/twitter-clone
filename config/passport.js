@@ -1,10 +1,10 @@
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
-import { secretOrKey } from './keys.js';
+// import { secretOrKey } from './keys.js';
 import User from '../models/User.js';
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: process?.env?.SECRET_OR_KEY || secretOrKey,
+  secretOrKey: process.env.SECRET_OR_KEY,
 };
 
 export default (passport) => {

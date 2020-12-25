@@ -4,13 +4,13 @@ import bodyParser from 'body-parser';
 import passport from 'passport';
 import pspt from './config/passport.js';
 
-import { mongoURI } from './config/keys.js';
+// import { mongoURI } from './config/keys.js';
 
 import users from './routes/api/users.js';
 import tweets from './routes/api/tweets.js';
 
 mongoose
-  .connect(process?.env?.MONGO_URI || mongoURI, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

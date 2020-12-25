@@ -1,7 +1,7 @@
 import passport from 'passport';
 import { Router } from 'express';
 import User from '../../models/User.js';
-import { secretOrKey } from '../../config/keys.js';
+// import { secretOrKey } from '../../config/keys.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import validateRegisterInput from '../../validation/register.js';
@@ -43,7 +43,8 @@ router.post('/register', (req, res) => {
               const payload = { id: userInfo.id, handle: userInfo.handle };
               jwt.sign(
                 payload,
-                process?.env?.SECRET_OR_KEY || secretOrKey,
+                process.env.SECRET_OR_KEY,
+                //  || secretOrKey,
                 { expiresIn: 3600 },
                 (err, token) => {
                   return res.send({ success: true, token: 'Bearer ' + token });
@@ -73,7 +74,8 @@ router.post('/login', (req, res) => {
         const payload = { id: user.id, handle: user.handle };
         jwt.sign(
           payload,
-          process?.env?.SECRET_OR_KEY || secretOrKey,
+          process.env.SECRET_OR_KEY,
+          //  || secretOrKey,
           { expiresIn: 3600 },
           (err, token) => {
             return res.json({ success: true, token: 'Bearer ' + token });
