@@ -10,7 +10,10 @@ import users from './routes/api/users.js';
 import tweets from './routes/api/tweets.js';
 
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process?.env?.MONGO_URI || mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log('connected to the mongodb'))
   .catch((err) => console.log('err', err));
 

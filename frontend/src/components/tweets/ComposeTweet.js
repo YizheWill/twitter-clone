@@ -24,7 +24,7 @@ class ComposeTweet extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ newTweet: nextProps.newTweet.text });
+    this.setState({ newTweet: nextProps?.newTweet?.text });
   }
 
   handleSubmit(e) {
