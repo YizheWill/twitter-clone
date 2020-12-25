@@ -10,6 +10,7 @@ import { mongoURI } from './config/keys.js';
 import users from './routes/api/users.js';
 import tweets from './routes/api/tweets.js';
 
+const app = express();
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('connected to the mongodb'))
@@ -22,7 +23,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const app = express();
 app.use(passport.initialize());
 pspt(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
