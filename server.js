@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import pspt from './config/passport.js';
+import path from 'path';
 
 import { mongoURI } from './config/keys.js';
 
@@ -13,6 +14,13 @@ mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('connected to the mongodb'))
   .catch((err) => console.log('err', err));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+}
 
 const app = express();
 app.use(passport.initialize());
