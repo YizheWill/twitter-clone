@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
+import { logout } from '../../actions/SessionActions';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -21,17 +21,34 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <Link to={'/tweets'}>All Tweets</Link>
-          <Link to={'/profile'}>Profile</Link>
-          <Link to={'/new_tweet'}>Write a Tweet</Link>
+          <Link style={{ marginRight: 10 }} to={'/tweets'}>
+            All Tweets
+          </Link>
+          <Link style={{ marginRight: 10 }} to={'/profile'}>
+            Profile
+          </Link>
+          <Link style={{ marginRight: 10 }} to={'/new_tweet'}>
+            Write a Tweet
+          </Link>
           <button onClick={this.logoutUser}>Logout</button>
         </div>
       );
     } else {
       return (
         <div>
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
+          <Link style={{ marginRight: 10 }} to={'/signup'}>
+            Signup
+          </Link>
+          <Link style={{ marginRight: 10 }} to={'/signin'}>
+            Login
+          </Link>
+          <Link style={{ marginRight: 10 }} to={'/tweets'}>
+            tweets
+          </Link>
+          <Link style={{ marginRight: 10 }} to={'/profile'}>
+            profile
+          </Link>
+          <Link to={'/new_tweet'}>new tweet</Link>
         </div>
       );
     }

@@ -6,7 +6,7 @@ import Tweet from '../../models/Tweet.js';
 
 const router = Router();
 
-router.get('/tweets', (req, res) => {
+router.get('/', (req, res) => {
   Tweet.find()
     .sort({ date: -1 })
     .then((tweets) => res.send(tweets))
