@@ -1,7 +1,7 @@
 import passport from 'passport';
 import { Router } from 'express';
 import User from '../../models/User.js';
-// import { secretOrKey } from '../../config/keys.js';
+import { secretOrKey } from '../../config/keys.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import validateRegisterInput from '../../validation/register.js';
@@ -41,15 +41,9 @@ router.post('/register', (req, res) => {
             .save()
             .then((userInfo) => {
               const payload = { id: userInfo.id, handle: userInfo.handle };
-              jwt.sign(
-                payload,
-                process.env.SECRET_OR_KEY,
-                //  || secretOrKey,
-                { expiresIn: 3600 },
-                (err, token) => {
-                  return res.send({ success: true, token: 'Bearer ' + token });
-                }
-              );
+              jwt.sign(payload, secretOrKey, { expiresIn: 3600 }, (err, token) => {
+                return res.send({ success: true, token: 'Bearer ' + token });
+              });
             })
             .catch((err) => console.log('err', err));
         });
@@ -72,15 +66,9 @@ router.post('/login', (req, res) => {
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
         const payload = { id: user.id, handle: user.handle };
-        jwt.sign(
-          payload,
-          process.env.SECRET_OR_KEY,
-          //  || secretOrKey,
-          { expiresIn: 3600 },
-          (err, token) => {
-            return res.json({ success: true, token: 'Bearer ' + token });
-          }
-        );
+        jwt.sign(payload, secretOrKey, { expiresIn: 3600 }, (err, token) => {
+          return res.json({ success: true, token: 'Bearer ' + token });
+        });
       } else {
         errors.password = 'wrong password';
         return res.status(400).json(errors);
